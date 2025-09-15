@@ -2,8 +2,7 @@
 
 📘 **Código del módulo:** 0613  
 👨‍🏫 **Docente:** Fernando D. Gómez Aranzabe  
-📅 **Curso:** 2024-2025  
-⏳ **Duración:** 180 horas (9 horas semanales)  
+📅 **Curso:** 2025-2026   
 🎓 **Ciclo:** Desarrollo de Aplicaciones Web (2º DAW)  
 
 ---
