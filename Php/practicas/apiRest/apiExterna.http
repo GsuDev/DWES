@@ -1,0 +1,42 @@
+### GET
+
+GET https://jsonplaceholder.typicode.com/posts
+
+### POST
+
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+  "name": "Puro Juan",
+  "username": "PuroJ",
+  "email": "purojuan@mail.org",
+  "userId": 1
+}
+
+### PUT
+
+PUT https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Puro Juan",
+  "username": "PuroJ",
+  "email": "juan@mail.com",
+  "userId": 1
+}
+
+### DELETE
+
+DELETE https://jsonplaceholder.typicode.com/posts/1
+
+### PATCH
+
+PATCH https://jsonplaceholder.typicode.com/posts/1
+
+Content-Type: application/json
+{
+  "email": "purojuan@mail.com",
+  "username": "PuroJuan"
+}
