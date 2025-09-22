@@ -1,3 +1,6 @@
 ### GET 
 
-GET http://localhost:8000/bisiesto/2024
+GET http://localhost:8000/users
+
+### GET con parámetro
+GET http://localhost:8000/user/1

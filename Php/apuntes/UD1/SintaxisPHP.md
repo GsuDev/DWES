@@ -81,46 +81,75 @@ http_response_code(404);
 
 // Enrutamiento de endpoints 
 
+<?php
+
+// Configuración de cabeceras para las PU*** tildes
+header("Content-Type: application/json; charset=UTF-8");
+
+// Recupera los datos de la URI
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uriParams = explode("/", trim($uri, "/"));
+
+// Obtener método de la solicitud
+$method = $_SERVER['REQUEST_METHOD'];
+
+// Obtener datos del cuerpo para POST/PUT
+$input = json_decode(file_get_contents('php://input'), true);
+
+// Respuesta por defecto
+$response = [
+  'status' => 'error',
+  'message' => 'Endpoint no encontrado',
+  'data' => null
+];
+
+http_response_code(404);
+
+// Enrutamiento de endpoints (si entra modifica la respuesta por defecto)
+
 // GET
 if ($method === 'GET') {
-    switch ($uriParams[0]) {
-        case "PRIMER ENDPOINT":
-            if (isset($uriParams[1]) && isset($uriParams[2])) {
-                $response = iniciarTablero($uriParams[1], $uriParams[2]);
-            } else {
-                $response['message'] = 'Parámetros insuficientes para iniciar tablero';
-            }
-            break;
-        case "SEGUNDO ENDPOINT":
-            if (isset($uriParams[1])) {
-                $response = calcularFactorial($uriParams[1]);
-            } else {
-                $response['message'] = 'Falta el número para calcular factorial';
-            }
-            break;
-        case "hello":
-            $response = [
-                'status' => 'success',
-                'message' => 'Servidor funcionando correctamente',
-                'data' => ['timestamp' => date('Y-m-d H:i:s')]
-            ];
-            http_response_code(200);
-            break;
-    }
+  switch ($uriParams[0]) {
+    case "users":
+      if (count($uriParams) == 1) {
+        $response = getUsers();
+      } else {
+        $response['message'] = 'Parámetros insuficientes para iniciar tablero';
+      }
+      break;
+    case "user":
+      if (isset($uriParams[1])) {
+        $response = getUser($uriParams[1]);
+      } else {
+        $response['message'] = 'Falta el número para calcular factorial';
+      }
+      break;
+    case "hello":
+      $response = [
+        'status' => 'success',
+        'message' => 'Servidor funcionando correctamente',
+        'data' => ['timestamp' => date('Y-m-d H:i:s')]
+      ];
+      http_response_code(200);
+      break;
+  }
 
-// POST
+  // POST
 } elseif ($method === 'POST') {
-    switch ($uriParams[0]) {
-        case "usuario":
-            $response = crearUsuario($input);
-            break;
-    }
-// PUT
+  switch ($uriParams[0]) {
+    case "users":
+      $response = createUser($input);
+      break;
+    case "login":
+      $response = login($input);
+      break;
+  }
+  // PUT
 } elseif ($method === 'PUT') {
     switch ($uriParams[0]) {
-        case "usuario":
+        case "user":
             if (isset($uriParams[1])) {
-                $response = actualizarUsuario($uriParams[1], $input);
+                $response = updateUser($uriParams[1], $input);
             }
             break;
     }
@@ -128,9 +157,9 @@ if ($method === 'GET') {
 // DELETE
 } elseif ($method === 'DELETE') {
     switch ($uriParams[0]) {
-        case "usuario":
+        case "user":
             if (isset($uriParams[1])) {
-                $response = eliminarUsuario($uriParams[1]);
+                $response = deleteUser($uriParams[1]);
             }
             break;
     }
