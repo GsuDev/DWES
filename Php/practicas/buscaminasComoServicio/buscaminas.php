@@ -1,4 +1,7 @@
 <?php
+
+
+
 // Clase que representa una celda
 class Celda {
     public $mina = false;    // ¿tiene mina?

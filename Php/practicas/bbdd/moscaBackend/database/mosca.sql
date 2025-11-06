@@ -1,0 +1,16 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    isAdmin BOOLEAN NOT NULL DEFAULT 0
+);
+
+CREATE TABLE games (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tries INT NOT NULL,
+    status INT NOT NULL,
+    board TEXT NOT NULL,
+    ownerId INT NOT NULL,
+    FOREIGN KEY (ownerId) REFERENCES users(id)
+);

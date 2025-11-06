@@ -1,0 +1,11 @@
+### 2.1
+GET http://localhost:8000/api/cuentaletras/avion/i
+
+### 2.3
+GET http://localhost:8000/api/cuentapalabras/En%20un%20lugar%20de%20la%20Mancha%20de%20cuyo%20nombre%20no%20quiero%20acordarme
+
+### 2.4
+GET http://localhost:8000/api/palindromo/a%20la%20gorda%20drogala
+
+### 2.5
+GET http://localhost:8000/api/claveCesar/En%20un%20lugar%20de%20la%20Mancha%20de%20cuyoz9

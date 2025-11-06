@@ -1,0 +1,59 @@
+### verpersonas
+GET http://127.0.0.1:8000/api/verpersonas
+
+### buscarpersona
+GET http://127.0.0.1:8000/api/buscarpersona/1A
+
+### vermayores
+GET http://127.0.0.1:8000/api/vermayores
+
+### insertarPersona
+POST http://127.0.0.1:8000/api/insertarPersona
+Content-Type: application/json
+
+{
+    "dni": "300A",
+    "nombre": "Jaime",
+    "tfno": "555 384923",
+    "edad": 25
+}
+
+### insertarPropiedad
+POST http://127.0.0.1:8000/api/insertarPropiedad
+Content-Type: application/json
+
+{
+    "dni": "2B",
+    "matricula": "100A"
+}
+
+### borrarPersona
+DELETE http://127.0.0.1:8000/api/borrarPersona/300A
+
+### modificarPersona
+PUT http://127.0.0.1:8000/api/modificarPersona/300A
+Content-Type: application/json
+
+{
+    "dni": "300A",
+    "nombre": "Javier",
+    "tfno": "555 384111923",
+    "edad": 250
+}
+
+### comentariosPersona
+GET http://127.0.0.1:8000/api/comentariosPersona/1A
+
+### mostrarComentarios
+GET http://127.0.0.1:8000/api/mostrarComentarios
+
+### cochesDe
+GET http://127.0.0.1:8000/api/cochesDe/1A
+
+### attach
+POST http://127.0.0.1:8000/api/attach/300A
+Content-Type: application/json
+
+{
+    "coches": ["700T","800U"]
+}

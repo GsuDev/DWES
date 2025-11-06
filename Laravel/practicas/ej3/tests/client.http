@@ -1,0 +1,6 @@
+### Método de inicio de partida
+GET http://localhost:8000/api/newgame/1/10
+
+### Método de destapar casilla
+
+GET http://localhost:8000/api/open/1/5/3/3
